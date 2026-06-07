@@ -57,7 +57,6 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
                 List<KeyValuePair<int, string>> result = new();
                 if (this.Dm.Hwnd == -1)
                 {
-                    result.Add(new KeyValuePair<int, string>(key: 0, value: "null"));
                     return result;
                 }
                 if (this.Dm.BindWindowEx() == 1)
@@ -66,7 +65,6 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
                     result.Add(new KeyValuePair<int, string>(key: 0, value: this.Dm.Hwnd.ToString() + "-" + this.Dm.Display));
                     return result;
                 }
-                result.Add(new KeyValuePair<int, string>(key: 0, value: "null"));
                 return result;
 
             });

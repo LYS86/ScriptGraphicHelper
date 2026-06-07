@@ -23,7 +23,7 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
 
         private IMqttClient? client;
 
-        private string deviceName = "null";
+        private string deviceName = string.Empty;
 
         public override async Task<List<KeyValuePair<int, string>>> Initialize()
         {
@@ -71,11 +71,11 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
                 }
             }
 
-            var list = new List<KeyValuePair<int, string>>
+            var list = new List<KeyValuePair<int, string>>();
+            if (!string.IsNullOrEmpty(this.deviceName))
             {
-                    new KeyValuePair<int, string>(key: 0, value: "null")
-            };
-
+                list.Add(new KeyValuePair<int, string>(key: 0, value: this.deviceName));
+            }
             return list;
         }
 
@@ -118,10 +118,11 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
         {
             return await Task.Run(() =>
             {
-                var result = new List<KeyValuePair<int, string>>
-                 {
-                     new KeyValuePair<int, string>(key: 0, value: this.deviceName)
-                 };
+                var result = new List<KeyValuePair<int, string>>();
+                if (!string.IsNullOrEmpty(this.deviceName))
+                {
+                    result.Add(new KeyValuePair<int, string>(key: 0, value: this.deviceName));
+                }
                 return result;
             });
         }

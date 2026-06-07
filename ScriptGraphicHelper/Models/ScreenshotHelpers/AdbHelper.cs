@@ -106,11 +106,6 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
                      }
                  }
 
-                 if (this.DeviceInfos.Count == 0)
-                 {
-                     this.DeviceInfos.Add(new KeyValuePair<int, string>(0, "null"));
-                 }
-
                  return this.DeviceInfos;
              });
         }
