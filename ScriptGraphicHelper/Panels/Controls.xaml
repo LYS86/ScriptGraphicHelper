@@ -33,8 +33,7 @@
             Orientation="Vertical">
             <StackPanel
                 Margin="0,0,0,10"
-                Orientation="Horizontal"
-                ToolTip.Tip="模式配置">
+                Orientation="Horizontal">
                 <Image Width="24" Height="24">
                     <Image.Source>
                         <svg:SvgImage Source="/assets/mode.svg" />
@@ -45,26 +44,35 @@
                     BorderBrush="#666666"
                     BorderThickness="0,0,0,1"
                     CornerRadius="0">
-                    <ComboBox
-                        Name="EmulatorOptions"
-                        Width="150"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Background="Transparent"
-                        BorderBrush="#666666"
-                        BorderThickness="0"
-                        FontSize="15"
-                        Items="{Binding EmulatorInfo, Mode=TwoWay}"
-                        SelectedIndex="{Binding EmulatorSelectedIndex, Mode=TwoWay}">
-                        <i:Interaction.Behaviors>
-							<!--点击事件-->
-                            <ic:EventTriggerBehavior EventName="Tapped">
-                                <icc:InvokeCommandAction Command="{Binding GetList}" />
-                            </ic:EventTriggerBehavior>
-                        </i:Interaction.Behaviors>
-                    </ComboBox>
+                    <Grid>
+                        <TextBlock
+                            Text="模式配置"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="#888888"
+                            FontSize="15"
+                            IsVisible="{Binding IsEmulatorPlaceholderVisible}" />
+                        <ComboBox
+                            Name="EmulatorOptions"
+                            Width="150"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="#666666"
+                            BorderThickness="0"
+                            FontSize="15"
+                            Items="{Binding EmulatorInfo, Mode=TwoWay}"
+                            SelectedIndex="{Binding EmulatorSelectedIndex, Mode=TwoWay}">
+                            <i:Interaction.Behaviors>
+                                <!--点击事件-->
+                                <ic:EventTriggerBehavior EventName="Tapped">
+                                    <icc:InvokeCommandAction Command="{Binding GetList}" />
+                                </ic:EventTriggerBehavior>
+                            </i:Interaction.Behaviors>
+                        </ComboBox>
+                    </Grid>
                 </Border>
             </StackPanel>
 			

@@ -43,8 +43,16 @@ namespace ScriptGraphicHelper.ViewModels
             set
             {
                 this.RaiseAndSetIfChanged(ref this.emulatorSelectedIndex, value);
+                this.IsEmulatorPlaceholderVisible = value == -1;
                 Emulator_Selected(value);
             }
+        }
+
+        private bool isEmulatorPlaceholderVisible = true;
+        public bool IsEmulatorPlaceholderVisible
+        {
+            get => this.isEmulatorPlaceholderVisible;
+            set => this.RaiseAndSetIfChanged(ref this.isEmulatorPlaceholderVisible, value);
         }
 
         private int simSelectedIndex = 0;
