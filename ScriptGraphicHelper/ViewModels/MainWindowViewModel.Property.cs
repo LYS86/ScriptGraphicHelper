@@ -43,6 +43,10 @@ namespace ScriptGraphicHelper.ViewModels
             set
             {
                 this.RaiseAndSetIfChanged(ref this.emulatorSelectedIndex, value);
+                if (value == -1)
+                {
+                    this.EmulatorPlaceholderText = ScreenshotHelperBridge.Select == -1 ? "模式配置" : "无设备连接";
+                }
                 this.IsEmulatorPlaceholderVisible = value == -1;
                 Emulator_Selected(value);
             }
@@ -53,6 +57,13 @@ namespace ScriptGraphicHelper.ViewModels
         {
             get => this.isEmulatorPlaceholderVisible;
             set => this.RaiseAndSetIfChanged(ref this.isEmulatorPlaceholderVisible, value);
+        }
+
+        private string emulatorPlaceholderText = "模式配置";
+        public string EmulatorPlaceholderText
+        {
+            get => this.emulatorPlaceholderText;
+            set => this.RaiseAndSetIfChanged(ref this.emulatorPlaceholderText, value);
         }
 
         private int simSelectedIndex = 0;

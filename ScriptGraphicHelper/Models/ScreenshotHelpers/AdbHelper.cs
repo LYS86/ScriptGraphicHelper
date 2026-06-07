@@ -72,8 +72,6 @@ namespace ScriptGraphicHelper.Models.ScreenshotHelpers
             // 获取 adb 中的设备列表
             var list = await GetList();
 
-            MessageBox.ShowAsync("adb 获取到的设备数量:" + list.Count);
-
             return list;
         }
 

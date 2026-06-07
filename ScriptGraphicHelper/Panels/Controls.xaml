@@ -46,7 +46,7 @@
                     CornerRadius="0">
                     <Grid>
                         <TextBlock
-                            Text="模式配置"
+                            Text="{Binding EmulatorPlaceholderText}"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Foreground="#888888"

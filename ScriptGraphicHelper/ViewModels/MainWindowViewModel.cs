@@ -296,6 +296,16 @@ namespace ScriptGraphicHelper.ViewModels
                 }
                 ScreenshotHelperBridge.Info = list;
                 this.EmulatorInfo = temp;
+
+                // 自动选中第一条设备
+                if (temp.Count > 0)
+                {
+                    this.EmulatorSelectedIndex = 0;
+                }
+                else
+                {
+                    this.EmulatorSelectedIndex = -1;
+                }
             }
         });
 
@@ -330,6 +340,12 @@ namespace ScriptGraphicHelper.ViewModels
                     this.EmulatorInfo = await ScreenshotHelperBridge.Initialize();
 
                     this.EmulatorSelectedIndex = -1;
+
+                    // 自动选中第一条设备
+                    if (this.EmulatorInfo != null && this.EmulatorInfo.Count > 0)
+                    {
+                        this.EmulatorSelectedIndex = 0;
+                    }
 
                     // 目标模式 截屏成功回调
                     ScreenshotHelperBridge.Helpers[ScreenshotHelperBridge.Select].OnSuccessed = new Action<Bitmap>((bitmap) =>
@@ -393,7 +409,7 @@ namespace ScriptGraphicHelper.ViewModels
                 this.WindowCursor = new Cursor(StandardCursorType.Wait);
                 if (ScreenshotHelperBridge.Select == -1
                     || ScreenshotHelperBridge.Index == -1 ||
-                    ScreenshotHelperBridge.Info[ScreenshotHelperBridge.Index].Value == "null")
+                    ScreenshotHelperBridge.Info.Count == 0)
                 {
                     MessageBox.ShowAsync("请先配置 -> (模拟器/tcp/句柄)");
                     this.WindowCursor = new Cursor(StandardCursorType.Arrow);
@@ -424,6 +440,7 @@ namespace ScriptGraphicHelper.ViewModels
 
             // 获取模式列表
             this.EmulatorInfo = ScreenshotHelperBridge.Init();
+            this.EmulatorPlaceholderText = "模式配置";
         }
 
         /// <summary>
