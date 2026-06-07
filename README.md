@@ -12,15 +12,50 @@
 
 ## 说明
 
-运行需要安装 [.NET 6 SDK](https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0) (每次重复打包,太大了)
-
 软件在 Release 中下载
 
 ## 源码开发
 
-Visual Studio 2022
+### 环境要求
 
-.NET 6
+| 依赖 | 说明 |
+|------|------|
+| **.NET 6.0 SDK** 或更高版本 | 编译工具链（.NET 10 SDK 同样兼容） |
+| **Visual Studio 2022** | IDE（推荐，非必需） |
+| **Windows x64** | 运行/编译平台 |
+
+### 编译
+
+```powershell
+# 还原依赖
+dotnet restore
+
+# 编译（Debug 模式）
+dotnet build
+
+# 编译（Release 模式）
+dotnet build -c Release
+```
+
+### 发布（生成可分发 EXE）
+
+**框架依赖发布（体积小，需目标机器安装 .NET 6 Runtime）：**
+
+```powershell
+dotnet publish -c Release -r win-x64 --self-contained false -o ./build
+```
+
+输出目录：`./build/`，入口：`ScriptGraphicHelper.exe`。
+
+**自包含单文件发布（无需安装 .NET Runtime，体积较大）：**
+
+```powershell
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o ./build
+```
+
+### Native 组件
+
+`Assets/mouse.dll` 为预编译的 C++ 鼠标控制库。如需重新编译，使用 Visual Studio 打开 `Native/Winodws/mouse/mouse.sln`（需要 v142 工具集），编译后将输出的 `mouse.dll` 覆盖到 `Assets/` 目录。
 
 ## 原作者
 
