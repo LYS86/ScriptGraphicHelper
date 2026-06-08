@@ -1,12 +1,7 @@
 # ScriptGraphicHelper
 
-**一款简单好用的图色助手,  快速生成多种脚本开发工具的图色格式代码**
-
-<br/>
-
-[点我进入下载页面](https://gitee.com/yiszza/ScriptGraphicHelper/releases)
-
-<br/>
+**一款简单好用的图色助手, 快速生成多种脚本开发工具的图色格式代码**
+---
 
 ## 功能
 
@@ -18,7 +13,7 @@
 - 支持大漠、按键、触动、autojs、easyclick、astator以及自定义的格式代码生成
 - 多分辨率适配的测试和代码生成(锚点格式)
 
-<br/>
+---
 
 ## 支持平台
 
@@ -26,16 +21,14 @@
 
 - mac： aj连接模式, tcp模式(mac上需要把scriptGraphichelper改为可执行文件, chmod +x filename)
 
-<br/>
+---
 
 ## 展示
 
-
-
 ![](screenshot/record.gif)
 
-<br/>
+---
 
-## 您的支持将鼓励我继续创作
+## License
 
-<img src="./screenshot/二维码.png"/>
+本项目基于 [MIT License](LICENSE) 发布。
